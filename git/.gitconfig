@@ -30,6 +30,7 @@
 
 [core]
   pager = delta
+  hooksPath = /dev/null
 
 [interactive]
   diffFilter = delta --color-only
