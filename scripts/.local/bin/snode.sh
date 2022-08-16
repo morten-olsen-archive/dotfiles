@@ -16,6 +16,7 @@ docker \
   run \
   $ARGS \
   -e NPM_GITLAB_TOKEN="$NPM_GITLAB_TOKEN" \
+  --net=host \
   --user "$UID:$GID" \
   -v "$ROOT:$ROOT" \
   --workdir="$CWD" \
