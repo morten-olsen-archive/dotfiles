@@ -25,6 +25,8 @@
 	insteadOf = https://gitlab.com/maersktankers/
 [url "git@github.com:morten-olsen/"]
 	insteadOf = https://github.com/morten-olsen/
+[url "git@github.com:0north/"]
+	insteadOf = https://github.com/0north/
 [url "https://"]
 	insteadOf = git://
 
