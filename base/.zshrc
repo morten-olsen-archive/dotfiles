@@ -31,12 +31,14 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
-# Load all files from .shell/zshrc.d directory
-if [ -d $HOME/.shellrc/zshrc.d ]; then
-  for file in $HOME/.shellrc/zshrc.d/*.zsh; do
-    source $file
-  done
-fi
+plugins+=(zsh-vi-mode)
+source $ZSH_CUSTOM/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+zvm_after_init() {
+  FZF_SHARE=/usr/share/fzf
+  [ -f $FZF_SHARE/completion.zsh ] && . "$FZF_SHARE/completion.zsh"
+  [ -f $FZF_SHARE/key-bindings.zsh ] && . "$FZF_SHARE/key-bindings.zsh"
+}
 
 # Load all files from .shell/rc.d directory
 if [ -d $HOME/.shellrc/rc.d ]; then
@@ -45,6 +47,12 @@ if [ -d $HOME/.shellrc/rc.d ]; then
   done
 fi
 
+# Load all files from .shell/zshrc.d directory
+if [ -d $HOME/.shellrc/zshrc.d ]; then
+  for file in $HOME/.shellrc/zshrc.d/*.zsh; do
+    source $file
+  done
+fi
 export GPG_TTY=$(tty)
 if [[ -n "$SSH_CONNECTION" ]] ;then
   export PINENTRY_USER_DATA="USE_CURSES=1"
@@ -52,11 +60,7 @@ fi
 
 
 [ -f ~/.env ] && source ~/.env
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='ag -g ""'
 
-plugins+=(zsh-vi-mode)
-source $ZSH_CUSTOM/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 alias luamake=~/.config/lua-language-server/3rd/luamake/luamake
 
 if [ `tput cols` -gt "70" ]; then
