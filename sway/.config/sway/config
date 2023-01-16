@@ -60,9 +60,10 @@ gaps inner 10
 # Autostart
 exec --no-startup-id mako
 exec --no-startup-id redshift -c ~/.config/redshift/config
-exec --no-startup-id xss-lock ~/.config/swaylock/lock.sh
 exec --no-startup-id kanshi
 exec --no-startup-id libinput-gestures
+exec_always /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
 # Input configuration
 input * {
@@ -127,9 +128,9 @@ bindsym --locked XF86MonBrightnessUp exec --no-startup-id light -A 5
 bindsym --locked XF86MonBrightnessDown exec --no-startup-id light -U 5
 
 # Idle configuration
-exec swayidle \
+exec swayidle -w \
     timeout 300 'exec $lock' \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 600 'systemctl suspend' \
     after-resume 'swaymsg "output * dpms on"' \
     before-sleep 'exec $lock'
 
