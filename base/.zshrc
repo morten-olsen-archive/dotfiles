@@ -103,3 +103,5 @@ PRINT_CENTER 60 "
   > welcome x_x
 "
 fi
+
+which wrk > /dev/null && eval `wrk tools bash`

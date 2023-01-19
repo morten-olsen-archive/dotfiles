@@ -1,17 +1,21 @@
 #!/bin/sh
 
 down() {
-pamixer -d 2
+pamixer -u
+pamixer -d 5
 volume=$(pamixer --get-volume)
-[$volume -gt 0 ] && volume=`expr $volume`  
-notify-send "Volume $volume%"
+[ $volume -gt 0 ] && volume=`expr $volume`  
+prec=`echo "scale=2; $volume / 100" | bc`
+avizo-client --progress=$prec --time=0.5 --background="#222" --foreground="#f39c12"
 }
 
 up() {
-pamixer -i 2
+pamixer -u
+pamixer -i 5
 volume=$(pamixer --get-volume)
 [ $volume -lt 100 ] && volume=`expr $volume`  
-notify-send "Volume $volume%"
+prec=`echo "scale=2; $volume / 100" | bc`
+avizo-client --progress=$prec --time=1
 }
 
 mute() {

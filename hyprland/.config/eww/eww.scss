@@ -128,7 +128,7 @@ border-radius: 5px;
 }
 .volume-icon{
   font-family: "Fira Code Nerd Font";
-  margin: -.2rem .0rem -.2rem -.7rem;
+  margin: 0rem .0rem 0rem -.6rem;
   color: $green;
 }
 scale trough {
@@ -167,12 +167,12 @@ scale trough {
   border: solid 3px transparent;
 
   &.occupied {
-    background: #666;
+    background-color: $black;
   }
 
   &.current {
     border: solid 3px transparent;
-    background: #c0392b;
+    background: #e67e22;
   }
 }
 

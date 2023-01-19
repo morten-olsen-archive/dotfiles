@@ -25,3 +25,6 @@
 [submodule "nvim/.config/nvim"]
 	path = nvim/.config/nvim
 	url = https://github.com/morten-olsen/nvim
+[submodule "wofi/.config/wofi"]
+	path = wofi/.config/wofi
+	url = https://github.com/dracula/wofi.git
