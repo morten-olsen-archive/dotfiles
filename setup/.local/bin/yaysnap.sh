@@ -20,7 +20,7 @@ function create_snapshot {
 
 function install_snapshot {
   IFS=$'\n' read -d '' -a TARGET <<< `cat $SNAPSHOT_FILE`
-  IFS=$'\n' read -d '' -a CURRENT <<< $(yay -Qe | cut -d ' ' -f 1)
+  IFS=$'\n' read -d '' -a CURRENT <<< $(yay -Qet | cut -d ' ' -f 1)
 
   for i in "${TARGET[@]}"
   do : 
